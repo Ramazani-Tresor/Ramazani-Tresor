@@ -13,7 +13,7 @@ class PwaController extends Controller
     {
         return response()->json([
             'name' => 'Karo — '.(setting('university_acronym') ?: setting('university_name')), 'short_name' => 'Karo', 'lang' => 'fr',
-            'start_url' => url('/'), 'scope' => url('/').'/', 'display' => 'standalone', 'background_color' => '#F2F4F7', 'theme_color' => '#0E1E3A',
+            'start_url' => url('/'), 'scope' => url('/').'/', 'display' => 'standalone', 'background_color' => '#F4F7FC', 'theme_color' => '#0B1F3A',
             'icons' => [['src' => asset('images/icon-192.png'), 'sizes' => '192x192', 'type' => 'image/png'], ['src' => asset('images/icon-512.png'), 'sizes' => '512x512', 'type' => 'image/png']],
         ], 200, ['Content-Type' => 'application/manifest+json']);
     }

@@ -1,15 +1,15 @@
 /*
  * Karo — Service Worker.
- *  - Ressources statiques locales (CSS, JS, polices, images) : cache d'abord.
+ *  - Ressources statiques locales (CSS, JS, icônes, images) : cache d'abord.
  *  - Pages HTML : réseau d'abord ; hors connexion, seule la page « Synchronisation » (consultation limitée et
  *    préparation de saisies) est servie depuis le cache, sinon une page explicative.
  *  - Les réponses JSON de l'API ne sont jamais mises en cache (données sensibles : IndexedDB avec expiration).
  */
-const VERSION = 'karo-v1';
+const VERSION = 'karo-v2';
 const scope = self.registration.scope.replace(/\/$/, '');
 const PRECACHE = ['/vendor/bootstrap/bootstrap.min.css', '/vendor/bootstrap/bootstrap.bundle.min.js', '/vendor/bootstrap-icons/bootstrap-icons.min.css',
     '/vendor/bootstrap-icons/fonts/bootstrap-icons.woff2', '/css/app.css', '/js/app.js', '/js/offline.js', '/images/logo.svg', '/images/icon-192.png',
-    '/fonts/inter-latin-400-normal.woff2', '/fonts/inter-latin-600-normal.woff2', '/hors-connexion'].map(p => scope + p);
+    '/hors-connexion'].map(p => scope + p);
 
 self.addEventListener('install', (e) => e.waitUntil(caches.open(VERSION).then(c => c.addAll(PRECACHE)).then(() => self.skipWaiting())));
 self.addEventListener('activate', (e) => e.waitUntil(caches.keys().then(k => Promise.all(k.filter(x => x !== VERSION).map(x => caches.delete(x)))).then(() => self.clients.claim())));

@@ -77,6 +77,6 @@ complet (voir `SYNCHRONISATION.md`). Captures dans `docs/captures/`.
 | Signature électronique | Contrats : génération PDF + archivage du scan signé ; pas de signature électronique qualifiée. |
 | Charge | Pas de test de performance ; volumes de démonstration réduits (16 étudiants). |
 | Skill « Sites » | Non disponible dans l'environnement ; non utilisé. |
-| Skill `ui-ux-pro-max` | Fichier `.claude/skills/ui-ux-pro-max/SKILL.md` absent du dépôt ; charte appliquée depuis le cahier des charges. |
+| Skill `ui-ux-pro-max` | Fichier `.claude/skills/ui-ux-pro-max/SKILL.md` absent du dépôt ; design repris de Biashara à la demande de l’utilisateur. |
 | Accessibilité | Bonnes pratiques appliquées (libellés, contrastes, focus) sans audit formel (WCAG) ni test avec lecteur d'écran. |
 | Réglementation | Durées de conservation proposées à titre indicatif, à valider juridiquement. |

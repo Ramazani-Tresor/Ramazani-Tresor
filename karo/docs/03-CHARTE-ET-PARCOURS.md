@@ -2,18 +2,25 @@
 
 ## Charte
 
+Sur demande de l'utilisateur, Karo reprend **le design de l'application Biashara** (même
+identité visuelle, mêmes composants). Le cahier des charges initial prévoyait un accent turquoise :
+il est remplacé par le bleu vif de Biashara ; le bleu marine principal et le fond clair sont conservés.
+
 | Élément | Valeur |
 |---|---|
-| Couleur principale | Bleu marine `#0E1E3A` (navigation, boutons principaux, en-têtes) |
-| Fond | Gris clair `#F2F4F7` ; cartes blanches |
-| Accent | Turquoise `#14B8A6` (foncé `#0F8F82`) (onglets actifs, indicateurs, liens d'action secondaires) |
-| États | Succès vert, avertissement ambre, erreur rouge, information bleu — toujours accompagnés d'un libellé texte (jamais la couleur seule) |
-| Typographie | Inter (fichiers locaux `public/fonts`) ; chiffres tabulaires pour les montants |
+| Couleur principale | Bleu nuit `#0B1F3A` (barre latérale, KPI mis en avant, en-têtes de documents) |
+| Accent / actions | Bleu vif `#1E6FD9` (boutons principaux, élément de menu actif, liens, onglets) ; survol `#1558B0` |
+| Fond | Bleu très clair `#F4F7FC` ; cartes blanches, bordures `#DCE5F2`, rayon 14 px ; bleu clair `#E8F1FC` pour les pastilles et icônes |
+| États | Succès `#12805C`, avertissement `#94600F`, erreur `#C0392B` — toujours accompagnés d'un libellé texte (jamais la couleur seule) |
+| Typographie | Police système (Segoe UI, Roboto, Helvetica Neue, Arial) comme Biashara ; chiffres tabulaires pour les montants |
+| Composants | Barre latérale bleu nuit, barre supérieure blanche avec recherche et pastille d'état réseau, tuiles d'accès rapide (première tuile en dégradé bleu), cartes KPI, barre de navigation basse sur téléphone, page de connexion en deux colonnes avec dégradé radial bleu |
+| Cibles tactiles | 44 px minimum pour boutons et champs |
 | Icônes | Bootstrap Icons locales |
 | Montants | Toujours affichés avec la devise (`1 250,00 USD`) ; aucune conversion implicite |
 
 Règles d'ergonomie appliquées :
 
+* sur téléphone, une barre basse donne accès aux modules principaux du rôle (Accueil, Saisie, Contrôle, Étudiants, Bilan, Plus) ;
 * tableaux denses mais lisibles, filtres en haut, pagination ; sur téléphone les tableaux défilent
   horizontalement dans leur carte, la page elle-même ne déborde pas (vérifié à 390 px) ;
 * badges de statut cohérents (`Labels::badge`) sur tous les écrans ;
@@ -23,7 +30,7 @@ Règles d'ergonomie appliquées :
 * focus clavier visible, libellés associés aux champs, contraste AA sur les couleurs principales.
 
 Le fichier `.claude/skills/ui-ux-pro-max/SKILL.md` cité pendant la demande n'existe pas dans le
-dépôt ; la charte ci-dessus suit donc directement le cahier des charges.
+dépôt ; la charte ci-dessus suit le design de Biashara (`biashara/public/css/app.css`).
 
 ## Écrans livrés
 

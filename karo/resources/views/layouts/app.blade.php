@@ -4,13 +4,13 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <meta name="theme-color" content="#0E1E3A">
+    <meta name="theme-color" content="#0B1F3A">
     <title>@yield('title', 'Karo') · {{ setting('university_acronym') ?: setting('university_name') }}</title>
     <link rel="manifest" href="{{ route('pwa.manifest') }}">
     <link rel="icon" type="image/png" href="{{ asset('favicon.png') }}">
     <link rel="stylesheet" href="{{ asset('vendor/bootstrap/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('vendor/bootstrap-icons/bootstrap-icons.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/app.css') }}?v=1">
+    <link rel="stylesheet" href="{{ asset('css/app.css') }}?v=2">
     @stack('head')
 </head>
 <body data-base="{{ url('/') }}" data-sw="{{ route('pwa.sw') }}" data-user="{{ auth()->id() }}">
@@ -37,7 +37,7 @@
                 <a id="queuePill" href="{{ route('sync.index') }}" class="net-pill net-queue d-none" title="Saisies hors connexion en attente"><i class="bi bi-cloud-upload"></i><span class="t">0</span></a>
                 <div class="dropdown">
                     <button class="btn btn-light d-flex align-items-center gap-2" data-bs-toggle="dropdown" aria-expanded="false">
-                        <span class="rounded-circle d-inline-grid fw-bold" style="width:30px;height:30px;place-items:center;background:var(--k-teal-soft);color:var(--k-teal-dark)">{{ mb_strtoupper(mb_substr(auth()->user()->name, 0, 1)) }}</span>
+                        <span class="rounded-circle d-inline-grid fw-bold" style="width:30px;height:30px;place-items:center;background:var(--k-blue-soft);color:var(--k-navy)">{{ mb_strtoupper(mb_substr(auth()->user()->name, 0, 1)) }}</span>
                         <span class="d-none d-sm-block text-start lh-sm"><span class="d-block small fw-600">{{ auth()->user()->name }}</span><span class="d-block text-muted-2" style="font-size:.7rem">{{ \Illuminate\Support\Str::limit(auth()->user()->roleNames(), 32) }}</span></span>
                     </button>
                     <ul class="dropdown-menu dropdown-menu-end shadow-sm">
@@ -54,6 +54,15 @@
         </main>
     </div>
 </div>
+<nav class="mobile-nav no-print" aria-label="Navigation rapide">
+    <a href="{{ route('home') }}" class="{{ request()->routeIs('home') ? 'active' : '' }}"><i class="bi bi-grid-1x2"></i>Accueil</a>
+    @if(can_do('payments.create'))<a href="{{ route('payments.entry') }}" class="{{ request()->routeIs('payments.entry') ? 'active' : '' }}"><i class="bi bi-receipt"></i>Saisie</a>@endif
+    @if(can_do('payments.check') || can_do('payments.validate'))<a href="{{ route('payments.control') }}" class="{{ request()->routeIs('payments.control') ? 'active' : '' }}"><i class="bi bi-check2-square"></i>Contrôle</a>@endif
+    @if(can_do('students.view'))<a href="{{ route('students.index') }}" class="{{ request()->routeIs('students.*') ? 'active' : '' }}"><i class="bi bi-people"></i>Étudiants</a>@endif
+    @if(can_do('dashboard.view'))<a href="{{ route('dashboard') }}" class="{{ request()->routeIs('dashboard') ? 'active' : '' }}"><i class="bi bi-speedometer2"></i>Bilan</a>@endif
+    @if(can_do('student.self'))<a href="{{ route('portal.show') }}" class="{{ request()->routeIs('portal.*') ? 'active' : '' }}"><i class="bi bi-person-vcard"></i>Mon espace</a>@endif
+    <a href="#" data-bs-toggle="offcanvas" data-bs-target="#menuMobile" aria-label="Plus de menus"><i class="bi bi-three-dots"></i>Plus</a>
+</nav>
 <div class="loading-overlay" aria-hidden="true"><div class="spinner-border text-secondary" role="status"><span class="visually-hidden">Chargement…</span></div></div>
 <div class="modal fade" id="confirmModal" tabindex="-1" aria-labelledby="confirmTitle" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered"><div class="modal-content">

@@ -2,6 +2,7 @@
 @section('title', 'Tableau de bord')
 @section('content')
 @include('partials.head', ['title' => 'Tableau de bord', 'sub' => 'Année '.e($filters->year?->code ?? '—').' · données du serveur de référence au '.now()->format('d/m/Y à H:i').' · montants présentés par devise, jamais additionnés entre devises'])
+@include('partials.tiles')
 <div class="card mb-3"><div class="card-body">@include('partials.filters', ['show' => ['year', 'faculty', 'program', 'promotion', 'fee', 'account', 'currency', 'period']])</div></div>
 
 @if($toReview || $syncConflicts || $anomalies || $breached)
@@ -24,7 +25,7 @@
         @endforeach
         <div class="col-6 col-md-4 col-xl-3"><div class="card kpi accent"><div class="l">{{ $definitions['recovery_rate'][0] }} <i class="bi bi-info-circle tip" tabindex="0" data-bs-toggle="tooltip" title="{{ $definitions['recovery_rate'][1] }}"></i></div>
             <div class="v">{{ str_replace('.', ',', $m['recovery_rate']) }} %</div>
-            <div class="progress mt-2" style="height:6px" role="progressbar" aria-valuenow="{{ (float) $m['recovery_rate'] }}" aria-valuemin="0" aria-valuemax="100" aria-label="Taux de recouvrement"><div class="progress-bar" style="width:{{ min(100, (float) $m['recovery_rate']) }}%;background:var(--k-teal)"></div></div></div></div>
+            <div class="progress mt-2" style="height:6px" role="progressbar" aria-valuenow="{{ (float) $m['recovery_rate'] }}" aria-valuemin="0" aria-valuemax="100" aria-label="Taux de recouvrement"><div class="progress-bar" style="width:{{ min(100, (float) $m['recovery_rate']) }}%;background:var(--k-blue)"></div></div></div></div>
         <div class="col-6 col-md-4 col-xl-3"><div class="card kpi alert-k"><div class="l">{{ $definitions['overdue'][0] }} <i class="bi bi-info-circle tip" tabindex="0" data-bs-toggle="tooltip" title="{{ $definitions['overdue'][1] }}"></i></div><div class="v">{{ money($m['overdue'], $cur) }}</div><div class="h">{{ $m['overdue_count'] }} créance(s)</div></div></div>
         <div class="col-6 col-md-4 col-xl-3"><div class="card kpi warn-k"><div class="l">{{ $definitions['pending'][0] }}</div><div class="v">{{ money($m['pending'], $cur) }}</div><div class="h">{{ $m['pending_count'] }} bordereau(x)</div></div></div>
         <div class="col-6 col-md-4 col-xl-3"><div class="card kpi warn-k"><div class="l">{{ $definitions['unmatched'][0] }}</div><div class="v">{{ money($m['unmatched'], $cur) }}</div><div class="h">{{ $m['unmatched_count'] }} ligne(s)</div></div></div>

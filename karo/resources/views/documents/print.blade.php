@@ -6,13 +6,13 @@
 <style>
     body { font-family: "DejaVu Sans", "Segoe UI", Arial, sans-serif; color: #111; font-size: 11.5px; margin: 0; background: {{ $pdf ? '#fff' : '#E8ECF2' }}; }
     .sheet { background: #fff; width: 190mm; min-height: 270mm; margin: {{ $pdf ? '0' : '16px auto' }}; padding: {{ $pdf ? '0' : '14mm' }}; position: relative; }
-    .head { border-bottom: 3px solid #0E1E3A; padding-bottom: 8px; margin-bottom: 12px; }
+    .head { border-bottom: 3px solid #0B1F3A; padding-bottom: 8px; margin-bottom: 12px; }
     .head td { vertical-align: top; }
-    .uni { font-size: 16px; font-weight: bold; color: #0E1E3A; }
-    .title { font-size: 17px; font-weight: bold; color: #0F8F82; text-align: right; }
+    .uni { font-size: 16px; font-weight: bold; color: #0B1F3A; }
+    .title { font-size: 17px; font-weight: bold; color: #1E6FD9; text-align: right; }
     table { width: 100%; border-collapse: collapse; }
     .grid td { padding: 3px 4px; }
-    .items th { background: #0E1E3A; color: #fff; text-align: left; padding: 5px; font-size: 10.5px; }
+    .items th { background: #0B1F3A; color: #fff; text-align: left; padding: 5px; font-size: 10.5px; }
     .items td { border-bottom: 1px solid #DDE3EC; padding: 5px; }
     .r { text-align: right; white-space: nowrap; }
     .prov { position: absolute; top: 40%; left: 8%; transform: rotate(-25deg); font-size: 64px; color: rgba(180, 35, 24, .16); font-weight: bold; letter-spacing: 6px; }
@@ -20,7 +20,7 @@
     .foot { margin-top: 26px; font-size: 10px; color: #444; }
     .sign td { padding-top: 34px; text-align: center; }
     .toolbar { text-align: center; padding: 10px; font-family: Arial, sans-serif; }
-    .toolbar a, .toolbar button { margin: 3px; padding: 7px 14px; border: 1px solid #0E1E3A; background: #fff; color: #0E1E3A; border-radius: 7px; text-decoration: none; font-size: 13px; cursor: pointer; }
+    .toolbar a, .toolbar button { margin: 3px; padding: 7px 14px; border: 1px solid #0B1F3A; background: #fff; color: #0B1F3A; border-radius: 7px; text-decoration: none; font-size: 13px; cursor: pointer; }
     @media print { .toolbar { display: none; } body { background: #fff; } .sheet { margin: 0; padding: 0; width: auto; } }
 </style>
 </head>
