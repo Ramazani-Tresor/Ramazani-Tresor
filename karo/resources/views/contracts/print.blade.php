@@ -1,0 +1,14 @@
+<!DOCTYPE html><html lang="fr"><head><meta charset="utf-8"><title>Contrat {{ $c->number }} v{{ $c->version }}</title>
+<style>body{font-family:"DejaVu Sans",Arial,sans-serif;font-size:11.5px;color:#111;margin:{{ $pdf ? '0' : '20px auto' }};max-width:190mm}h1{font-size:17px;color:#0E1E3A;text-align:center}table{width:100%;border-collapse:collapse}.items th{background:#0E1E3A;color:#fff;padding:5px;text-align:left}.items td{border-bottom:1px solid #DDE3EC;padding:5px}.r{text-align:right}.prov{color:#B42318;font-weight:bold;text-align:center;border:2px solid #B42318;padding:4px}.sign td{padding-top:40px;text-align:center}@media print{button{display:none}}</style></head>
+<body>@unless($pdf)<p style="text-align:center"><button onclick="window.print()">Imprimer</button></p>@endunless
+<table><tr><td><strong style="font-size:15px;color:#0E1E3A">{{ $shop['university_name'] }}</strong><br>{{ $shop['university_address'] }}</td><td class="r">N° {{ $c->number }} — version {{ $c->version }}<br>Document {{ $doc->number }}<br>{{ now()->format('d/m/Y') }}</td></tr></table>
+<h1>CONTRAT D’ENGAGEMENT DE PAIEMENT</h1>
+@if($c->status === 'draft')<p class="prov">PROJET — PROVISOIRE, NON APPROUVÉ</p>@endif
+<p>Entre l’université, représentée par {{ $shop['signatory_1_name'] ?: '……' }} ({{ $shop['signatory_1_title'] }}), et l’étudiant(e) <strong>{{ $c->student->fullName() }}</strong>, matricule <strong>{{ $c->student->matricule }}</strong>, pour l’année académique <strong>{{ $c->academicYear->code }}</strong>.</p>
+<table class="items"><thead><tr><th>Frais concernés</th><th class="r">Montant net</th></tr></thead><tbody>@foreach($charges as $ch)<tr><td>{{ $ch->category->label }}</td><td class="r">{{ money($ch->netAmount(), $ch->currency) }}</td></tr>@endforeach
+<tr><td><strong>Total dû</strong></td><td class="r"><strong>{{ money($c->total_due, $c->currency) }}</strong></td></tr><tr><td>Paiements déjà pris en compte</td><td class="r">{{ money($c->paid_at_signature, $c->currency) }}</td></tr><tr><td><strong>Solde à régler</strong></td><td class="r"><strong>{{ money($c->balance, $c->currency) }}</strong></td></tr></tbody></table><br>
+<table class="items"><thead><tr><th>Échéance</th><th>Date limite</th><th class="r">Montant</th></tr></thead><tbody>@foreach($c->installments as $i)<tr><td>{{ $i->sequence }}</td><td>{{ $i->due_date->format('d/m/Y') }}</td><td class="r">{{ money($i->amount, $c->currency) }}</td></tr>@endforeach</tbody></table>
+<p><strong>Conditions :</strong> {{ $c->conditions }}</p>
+<table class="sign"><tr>@foreach($c->signatories ?? [] as $s)<td>{{ $s['title'] }}<br>{{ $s['name'] }}<br><br>Signature</td>@endforeach</tr></table>
+<table style="margin-top:20px"><tr><td style="font-size:10px">Vérification : {{ route('documents.verify', $doc->verification_token) }}</td><td class="r"><img src="{{ $qr }}" width="100" height="100" alt="QR code"></td></tr></table>
+</body></html>
