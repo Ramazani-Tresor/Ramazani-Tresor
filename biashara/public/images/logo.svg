@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Biashara">
+  <rect width="64" height="64" rx="16" fill="#0B1F3A"/>
+  <path d="M12 21a3 3 0 0 1 3-3h34a3 3 0 0 1 3 3l-2 27a5 5 0 0 1-5 5H19a5 5 0 0 1-5-5z" fill="#1E6FD9"/>
+  <path d="M24 27a8 8 0 0 1 16 0" fill="none" stroke="#BFDBFE" stroke-width="3" stroke-linecap="round"/>
+  <circle cx="24" cy="27.5" r="2" fill="#BFDBFE"/>
+  <circle cx="40" cy="27.5" r="2" fill="#BFDBFE"/>
+  <rect x="21.5" y="38" width="5" height="9" rx="1.5" fill="#FFFFFF"/>
+  <rect x="29.5" y="35" width="5" height="12" rx="1.5" fill="#FFFFFF"/>
+  <rect x="37.5" y="32" width="5" height="15" rx="1.5" fill="#BFDBFE"/>
+</svg>

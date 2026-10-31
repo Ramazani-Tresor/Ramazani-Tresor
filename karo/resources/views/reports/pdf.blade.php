@@ -1,0 +1,6 @@
+<!DOCTYPE html><html lang="fr"><head><meta charset="utf-8"><style>body{font-family:"DejaVu Sans",sans-serif;font-size:8.8px}h1{font-size:13px;color:#0B1F3A;margin:0}table{width:100%;border-collapse:collapse}th{background:#0B1F3A;color:#fff;padding:4px;text-align:left}td{border-bottom:1px solid #ddd;padding:3px}.r{text-align:right}tfoot td{font-weight:bold;border-top:2px solid #0B1F3A}</style></head><body>
+<h1>{{ setting('university_name') }} — {{ $r['title'] }}</h1>
+<p>Année {{ $filters->year?->code }} · généré le {{ now()->format('d/m/Y H:i') }} · montants par devise (jamais additionnés entre devises).{{ $r['note'] ? ' '.$r['note'] : '' }}</p>
+<table><thead><tr>@foreach($r['columns'] as $k => $l)<th class="{{ in_array($k, $r['money']) ? 'r' : '' }}">{{ $l }}</th>@endforeach</tr></thead><tbody>
+@foreach($r['rows'] as $row)<tr>@foreach($r['columns'] as $k => $l)<td class="{{ in_array($k, $r['money']) ? 'r' : '' }}">{{ in_array($k, $r['money']) ? money($row[$k]) : $row[$k] }}</td>@endforeach</tr>@endforeach</tbody>
+<tfoot>@foreach($r['totals'] as $cur => $t)<tr>@foreach($r['columns'] as $k => $l)<td class="{{ in_array($k, $r['money']) ? 'r' : '' }}">{{ isset($t[$k]) ? money($t[$k], $cur) : ($loop->first ? 'Total '.$cur : '') }}</td>@endforeach</tr>@endforeach</tfoot></table></body></html>
