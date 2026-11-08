@@ -1,0 +1,30 @@
+/* UNILU-GRH — compléments au design Biashara (app.css). */
+.avatar-sm { width: 30px; height: 30px; place-items: center; background: var(--k-blue-soft); color: var(--k-navy); }
+.photo-id { width: 112px; height: 136px; object-fit: cover; border-radius: 12px; border: 1px solid var(--k-line); background: var(--k-blue-soft); }
+.photo-placeholder { width: 112px; height: 136px; border-radius: 12px; display: grid; place-items: center; background: var(--k-blue-soft); color: var(--k-blue); font-size: 2.6rem; }
+.timeline { list-style: none; padding-left: 0; margin: 0; position: relative; }
+.timeline::before { content: ""; position: absolute; left: 11px; top: 4px; bottom: 4px; width: 2px; background: var(--k-line); }
+.timeline li { position: relative; padding: 0 0 18px 36px; }
+.timeline li .dot { position: absolute; left: 4px; top: 3px; width: 16px; height: 16px; border-radius: 50%; background: #fff; border: 3px solid var(--k-blue); }
+.timeline li.muted .dot { border-color: #A9BCD8; }
+.timeline li.warn .dot { border-color: #B7791F; }
+.timeline .when { font-size: .78rem; color: var(--k-muted); font-weight: 600; }
+.timeline .what { font-weight: 600; color: var(--k-navy); }
+.chart-box { position: relative; height: 260px; }
+.chart-box.tall { height: 340px; }
+.stat-list { list-style: none; margin: 0; padding: 0; }
+.stat-list li { display: flex; justify-content: space-between; gap: 10px; padding: 6px 0; border-bottom: 1px solid var(--k-line-2); }
+.stat-list li:last-child { border-bottom: 0; }
+.nav-tabs { flex-wrap: nowrap; overflow-x: auto; overflow-y: hidden; }
+.nav-tabs .nav-link { white-space: nowrap; }
+.mini { font-size: .8rem; }
+.form-section { font-size: .78rem; text-transform: uppercase; letter-spacing: .06em; color: var(--k-muted); font-weight: 700; margin: 18px 0 8px; }
+.form-section:first-child { margin-top: 0; }
+.unit-tree { list-style: none; padding-left: 18px; margin: 0; }
+.unit-tree.root { padding-left: 0; }
+.unit-tree li { padding: 3px 0; }
+.sensitive { background: repeating-linear-gradient(135deg, #FFF8E8, #FFF8E8 10px, #FFF4E0 10px, #FFF4E0 20px); }
+dl.kv { display: grid; grid-template-columns: minmax(0, 220px) minmax(0, 1fr); gap: 6px 14px; margin: 0; }
+dl.kv dt { color: var(--k-muted); font-weight: 600; font-size: .84rem; }
+dl.kv dd { margin: 0; }
+@media (max-width: 575.98px) { dl.kv { grid-template-columns: minmax(0, 1fr); } dl.kv dd { margin-bottom: 6px; } }

@@ -1,0 +1,10 @@
+{{-- Filtres du tableau de bord : $show = liste parmi year, unit, family, category, status --}}
+<form method="get" class="filters">
+    @if(in_array('year', $show))<div><label class="form-label" for="fy">Année académique</label><select id="fy" name="year" class="form-select"><option value="">Année en cours</option>@foreach($years as $y)<option value="{{ $y->id }}" @selected(($f['year'] ?? '') == $y->id)>{{ $y->code }}</option>@endforeach</select></div>@endif
+    @if(in_array('unit', $show))<div><label class="form-label" for="fu">Faculté / service</label><select id="fu" name="unit" class="form-select"><option value="">Toute l’université</option>@foreach($units as $un)<option value="{{ $un->id }}" @selected(($f['unit'] ?? '') == $un->id)>{{ $un->name }}</option>@endforeach</select></div>@endif
+    @if(in_array('family', $show))<div><label class="form-label" for="ff">Famille</label><select id="ff" name="family" class="form-select"><option value="">Toutes</option>@foreach(\App\Support\PermissionRegistry::FAMILIES as $k => $v)<option value="{{ $k }}" @selected(($f['family'] ?? '') === $k)>{{ $v }}</option>@endforeach</select></div>@endif
+    @if(in_array('category', $show))<div><label class="form-label" for="fc">Catégorie</label><select id="fc" name="category" class="form-select"><option value="">Toutes</option>@foreach($categories as $c)<option value="{{ $c->id }}" @selected(($f['category'] ?? '') == $c->id)>{{ $c->name }}</option>@endforeach</select></div>@endif
+    @if(in_array('status', $show))<div><label class="form-label" for="fs">Situation administrative</label><select id="fs" name="status" class="form-select"><option value="">Effectif en fonction</option>@foreach(\App\Models\Employee::STATUSES as $k => $v)<option value="{{ $k }}" @selected(($f['status'] ?? '') === $k)>{{ $v }}</option>@endforeach</select></div>@endif
+    <button class="btn btn-primary"><i class="bi bi-funnel"></i> Filtrer</button>
+    @if(array_filter($f ?? []))<a class="btn btn-light" href="{{ url()->current() }}">Réinitialiser</a>@endif
+</form>
