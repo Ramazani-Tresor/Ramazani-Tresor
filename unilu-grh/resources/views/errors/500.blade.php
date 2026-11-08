@@ -1,0 +1,3 @@
+<!DOCTYPE html><html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Erreur inattendue</title>
+<link rel="stylesheet" href="{{ asset('vendor/bootstrap/bootstrap.min.css') }}"><link rel="stylesheet" href="{{ asset('css/app.css') }}"></head>
+<body class="d-grid" style="place-items:center;min-height:100vh"><main class="text-center p-4"><img src="{{ asset('images/logo.svg') }}" width="60" alt=""><h1 class="h4 mt-3 text-navy">Erreur inattendue</h1><p class="text-muted-2">L’opération n’a pas été enregistrée. Réessayez ; si le problème persiste, contactez l’administrateur technique.</p><a href="{{ url('/') }}" class="btn btn-primary">Retour à l’accueil</a></main></body></html>

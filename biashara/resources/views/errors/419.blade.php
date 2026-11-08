@@ -1,0 +1,3 @@
+<!DOCTYPE html><html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Session expirée</title>
+<link rel="stylesheet" href="{{ asset('vendor/bootstrap/bootstrap.min.css') }}"><link rel="stylesheet" href="{{ asset('css/app.css') }}"></head>
+<body class="d-grid" style="place-items:center;min-height:100vh"><div class="text-center p-4"><img src="{{ asset('images/logo.svg') }}" width="64" alt=""><h1 class="h4 mt-3 text-navy">Session expirée</h1><p class="text-muted-2">Pour votre sécurité, la page a expiré. Rechargez-la puis recommencez l'opération.</p><a href="javascript:history.back()" class="btn btn-primary">Revenir</a></div></body></html>
